@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2020-04-28T00:34:39Z"
+  labels:
+    app: mariadb
+    chart: mariadb-7.3.21
+    component: master
+    heritage: Helm
+    release: autospot-wordpress-dev
+  name: autospot-wordpress-dev-mariadb
+  namespace: dev
+  resourceVersion: "13029881"
+  selfLink: /api/v1/namespaces/dev/services/autospot-wordpress-dev-mariadb
+  uid: dac3e564-f053-43c8-bc36-70d9c7731096
+spec:
+  clusterIP: 172.20.231.173
+  ports:
+  - name: mysql
+    port: 3306
+    protocol: TCP
+    targetPort: mysql
+  selector:
+    app: mariadb
+    component: master
+    release: autospot-wordpress-dev
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

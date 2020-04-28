@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    pv.kubernetes.io/bind-completed: "yes"
+    pv.kubernetes.io/bound-by-controller: "yes"
+    volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
+    volume.kubernetes.io/selected-node: ip-10-0-137-65.ec2.internal
+  creationTimestamp: "2020-04-28T00:34:38Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    app.kubernetes.io/instance: autospot-wordpress-dev
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: wordpress
+    helm.sh/chart: wordpress-9.2.0
+  name: autospot-wordpress-dev
+  namespace: dev
+  resourceVersion: "13029929"
+  selfLink: /api/v1/namespaces/dev/persistentvolumeclaims/autospot-wordpress-dev
+  uid: 10e9aa1f-ceb8-44c9-a25e-b0aa9c4675e9
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: gp2
+  volumeMode: Filesystem
+  volumeName: pvc-10e9aa1f-ceb8-44c9-a25e-b0aa9c4675e9
+status:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  phase: Bound

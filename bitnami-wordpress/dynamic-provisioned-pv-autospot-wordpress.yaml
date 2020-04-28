@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    kubernetes.io/createdby: aws-ebs-dynamic-provisioner
+    pv.kubernetes.io/bound-by-controller: "yes"
+    pv.kubernetes.io/provisioned-by: kubernetes.io/aws-ebs
+  creationTimestamp: "2020-04-28T00:34:44Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  labels:
+    failure-domain.beta.kubernetes.io/region: us-east-1
+    failure-domain.beta.kubernetes.io/zone: us-east-1a
+  name: pvc-10e9aa1f-ceb8-44c9-a25e-b0aa9c4675e9
+  resourceVersion: "13029927"
+  selfLink: /api/v1/persistentvolumes/pvc-10e9aa1f-ceb8-44c9-a25e-b0aa9c4675e9
+  uid: a442b80c-20b6-4b71-8f30-2c10d462b1a0
+spec:
+  accessModes:
+  - ReadWriteOnce
+  awsElasticBlockStore:
+    fsType: ext4
+    volumeID: aws://us-east-1a/vol-0cd682c93ae622549
+  capacity:
+    storage: 10Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: autospot-wordpress-dev
+    namespace: dev
+    resourceVersion: "13029899"
+    uid: 10e9aa1f-ceb8-44c9-a25e-b0aa9c4675e9
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: failure-domain.beta.kubernetes.io/zone
+          operator: In
+          values:
+          - us-east-1a
+        - key: failure-domain.beta.kubernetes.io/region
+          operator: In
+          values:
+          - us-east-1
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: gp2
+  volumeMode: Filesystem
+status:
+  phase: Bound

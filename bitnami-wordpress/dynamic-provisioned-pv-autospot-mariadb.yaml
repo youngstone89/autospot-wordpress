@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    kubernetes.io/createdby: aws-ebs-dynamic-provisioner
+    pv.kubernetes.io/bound-by-controller: "yes"
+    pv.kubernetes.io/provisioned-by: kubernetes.io/aws-ebs
+  creationTimestamp: "2020-04-28T00:34:44Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  labels:
+    failure-domain.beta.kubernetes.io/region: us-east-1
+    failure-domain.beta.kubernetes.io/zone: us-east-1a
+  name: pvc-e6d48cb7-15c2-4644-8dad-37b81eeb8df9
+  resourceVersion: "13029932"
+  selfLink: /api/v1/persistentvolumes/pvc-e6d48cb7-15c2-4644-8dad-37b81eeb8df9
+  uid: 5dcfa8ae-449c-4d6d-b78d-3ee46959e579
+spec:
+  accessModes:
+  - ReadWriteOnce
+  awsElasticBlockStore:
+    fsType: ext4
+    volumeID: aws://us-east-1a/vol-0b68ed8a18e310a74
+  capacity:
+    storage: 8Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: data-autospot-wordpress-dev-mariadb-0
+    namespace: dev
+    resourceVersion: "13029913"
+    uid: e6d48cb7-15c2-4644-8dad-37b81eeb8df9
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: failure-domain.beta.kubernetes.io/region
+          operator: In
+          values:
+          - us-east-1
+        - key: failure-domain.beta.kubernetes.io/zone
+          operator: In
+          values:
+          - us-east-1a
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: gp2
+  volumeMode: Filesystem
+status:
+  phase: Bound

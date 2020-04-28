@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2020-04-28T00:34:39Z"
+  labels:
+    app.kubernetes.io/instance: autospot-wordpress-dev
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: wordpress
+    helm.sh/chart: wordpress-9.2.0
+  name: autospot-wordpress-dev
+  namespace: dev
+  resourceVersion: "13029919"
+  selfLink: /api/v1/namespaces/dev/services/autospot-wordpress-dev
+  uid: 0ea5a515-e5f1-4399-a92a-d896df6e31b6
+spec:
+  clusterIP: 172.20.76.0
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: http
+    nodePort: 32759
+    port: 80
+    protocol: TCP
+    targetPort: http
+  - name: https
+    nodePort: 30192
+    port: 443
+    protocol: TCP
+    targetPort: https
+  selector:
+    app.kubernetes.io/instance: autospot-wordpress-dev
+    app.kubernetes.io/name: wordpress
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - hostname: a0ea5a515e5f14399a92ad896df6e31b-648946828.us-east-1.elb.amazonaws.com
